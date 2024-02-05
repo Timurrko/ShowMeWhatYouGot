@@ -7,3 +7,7 @@ with open(r'C:\Users\shara\PycharmProjects\ShowMeWhatYouGot\data\hobbies', 'r', 
 print(data)
 with open(r'C:\Users\shara\PycharmProjects\ShowMeWhatYouGot\data\hobbies.json', 'w', encoding='utf-8') as file:
     dump(data, file)
+
+
+
+
