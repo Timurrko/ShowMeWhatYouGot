@@ -1,9 +1,21 @@
-# Создай класс с методом, который читает данные из файла hobbies.json
-# и записывает их в аттрибут - словарь где ключи - имена (первая буква - заглавная, остальные - строчные),
-# а значения - списки хобби (все хобби в нижнем регистре)
-# Обрати внимание, что в файле я раскидал пробелы, сделай так, чтобы твой код на них не реагировал,
-# считай, что одинаковые имена - одинаковые люди, независимо от регистра букв
-#
-# Добавь своему классу метод, возвражающий словарь имён и хобби
-#
-# Добавь своему классу метод, выводящий в красивом виде людей и их хобби
+class HobbiesReader:
+    def __init__(self, filename):
+        self.data = {}
+        self.read_hobbies(filename)
+
+    def read_hobbies(self, filename):
+        with open(filename, 'r') as file:
+            data = json.load(file)
+            for name, hobbies in data.items():
+                name = name.strip().capitalize()
+                self.data[name] = [hobby.strip().split().lower() for hobby in hobbies]
+
+    def get_hobbies(self):
+        return self.data
+
+    def print_hobbies(self):
+        for name, hobbies in self.data.items():
+            print(f"{name}: {', '.join(hobbies)}")
+
+
+
